@@ -4,6 +4,6 @@
 
 ## Сборка и запуск
 ```bash
-g++ -std=c++17 Main.cpp -o main
+g++ -std=c++17 Main.cpp Student.cpp -o main
 ./main
 ```

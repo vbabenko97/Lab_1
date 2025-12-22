@@ -1,229 +1,84 @@
-#include <string.h>
 #include <iostream>
-using namespace std;
-#pragma warning (disable:4996)
+#include <string>
 
 class Student
 {
-private:
-	char*surname;
-	char*name;
-	char*patronymic;
-	char*birthday;
-	char*address;
-	char*phone;
-	char*faculty;
-	char*course;
 public:
-	Student(char*cur_s, char*cur_n, char*cur_pat, char*cur_b, char*cur_a, char*cur_ph, char*cur_f, char*cur_c) :surname(cur_s), name(cur_n),
-		patronymic(cur_pat), birthday(cur_b), address(cur_a), phone(cur_ph), faculty(cur_f), course(cur_c)
-	{
-		surname = new char[strlen(cur_s) + 1];
-		strcpy(surname, cur_s);
-		name = new char[strlen(cur_n) + 1];
-		strcpy(name, cur_n);
-		patronymic = new char[strlen(cur_pat) + 1];
-		strcpy(patronymic, cur_pat);
-		birthday = new char[strlen(cur_b) + 1];
-		strcpy(birthday, cur_b);
-		address = new char[strlen(cur_a) + 1];
-		strcpy(address, cur_a);
-		phone = new char[strlen(cur_ph) + 1];
-		strcpy(phone, cur_ph);
-		faculty = new char[strlen(cur_f) + 1];
-		strcpy(faculty, cur_f);
-		course = new char[strlen(cur_c) + 1];
-		strcpy(course, cur_c);
-	}
-	~Student()
-	{
-		delete[] surname;
-		delete[] name;
-		delete[] patronymic;
-		delete[] birthday;
-		delete[] address;
-		delete[] phone;
-		delete[] faculty;
-		delete[] course;
-	}
-	void set_surname(char*cur_s)
-	{
-		if (surname != NULL)
-		{
-			delete[] surname;
-			surname = new char[strlen(cur_s) + 1];
-			strcpy(surname, cur_s);
-		}
-		else
-		{
-			surname = new char[strlen(cur_s) + 1];
-			strcpy(surname, cur_s);
-		}
-	}
+    Student(std::string surname,
+            std::string name,
+            std::string patronymic,
+            std::string birthday,
+            std::string address,
+            std::string phone,
+            std::string faculty,
+            std::string course)
+        : surname_(std::move(surname)),
+          name_(std::move(name)),
+          patronymic_(std::move(patronymic)),
+          birthday_(std::move(birthday)),
+          address_(std::move(address)),
+          phone_(std::move(phone)),
+          faculty_(std::move(faculty)),
+          course_(std::move(course))
+    {
+    }
 
-	void set_name(char*cur_n)
-	{
-		if (name != NULL)
-		{
-			delete[] name;
-			name = new char[strlen(cur_n) + 1];
-			strcpy(name, cur_n);
-		}
-		else
-		{
-			name = new char[strlen(cur_n) + 1];
-			strcpy(name, cur_n);
-		}
-	}
+    const std::string& surname() const { return surname_; }
+    const std::string& name() const { return name_; }
+    const std::string& patronymic() const { return patronymic_; }
+    const std::string& birthday() const { return birthday_; }
+    const std::string& address() const { return address_; }
+    const std::string& phone() const { return phone_; }
+    const std::string& faculty() const { return faculty_; }
+    const std::string& course() const { return course_; }
 
-	void set_patronymic(char*cur_pat)
-	{
-		if (patronymic != NULL)
-		{
-			delete[] patronymic;
-			patronymic = new char[strlen(cur_pat) + 1];
-			strcpy(patronymic, cur_pat);
-		}
-		else
-		{
-			patronymic = new char[strlen(cur_pat) + 1];
-			strcpy(patronymic, cur_pat);
-		}
-	}
+    void setSurname(const std::string& surname) { surname_ = surname; }
+    void setName(const std::string& name) { name_ = name; }
+    void setPatronymic(const std::string& patronymic) { patronymic_ = patronymic; }
+    void setBirthday(const std::string& birthday) { birthday_ = birthday; }
+    void setAddress(const std::string& address) { address_ = address; }
+    void setPhone(const std::string& phone) { phone_ = phone; }
+    void setFaculty(const std::string& faculty) { faculty_ = faculty; }
+    void setCourse(const std::string& course) { course_ = course; }
 
-	void set_birthday(char*cur_b)
-	{
-		if (birthday != NULL)
-		{
-			delete[] birthday;
-			birthday = new char[strlen(cur_b) + 1];
-			strcpy(birthday, cur_b);
-		}
-		else
-		{
-			birthday = new char[strlen(cur_b) + 1];
-			strcpy(birthday, cur_b);
-		}
-	}
+    void print(std::ostream& out) const
+    {
+        out << "\u0424\u0430\u043c\u0438\u043b\u0438\u044f: " << surname_ << '\n'
+            << "\u0418\u043c\u044f: " << name_ << '\n'
+            << "\u041e\u0442\u0447\u0435\u0441\u0442\u0432\u043e: " << patronymic_ << '\n'
+            << "\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f: " << birthday_ << '\n'
+            << "\u0410\u0434\u0440\u0435\u0441: " << address_ << '\n'
+            << "\u0422\u0435\u043b\u0435\u0444\u043e\u043d: " << phone_ << '\n'
+            << "\u0424\u0430\u043a\u0443\u043b\u044c\u0442\u0435\u0442: " << faculty_ << '\n'
+            << "\u041a\u0443\u0440\u0441: " << course_ << '\n';
+    }
 
-	void set_address(char*cur_a)
-	{
-		if (address != NULL)
-		{
-			delete[] address;
-			address = new char[strlen(cur_a) + 1];
-			strcpy(address, cur_a);
-		}
-		else
-		{
-			address = new char[strlen(cur_a) + 1];
-			strcpy(address, cur_a);
-		}
-	}
-
-	void set_phone(char*cur_ph)
-	{
-		if (phone != NULL)
-		{
-			delete[] phone;
-			phone = new char[strlen(cur_ph) + 1];
-			strcpy(phone, cur_ph);
-		}
-		else
-		{
-			phone = new char[strlen(cur_ph) + 1];
-			strcpy(phone, cur_ph);
-		}
-	}
-
-	void set_faculty(char*cur_f)
-	{
-		if (faculty != NULL)
-		{
-			delete[] faculty;
-			faculty = new char[strlen(cur_f) + 1];
-			strcpy(faculty, cur_f);
-		}
-		else
-		{
-			faculty = new char[strlen(cur_f) + 1];
-			strcpy(faculty, cur_f);
-		}
-	}
-
-	void set_course(char*cur_c)
-	{
-		if (course != NULL)
-		{
-			delete[] course;
-			course = new char[strlen(cur_c) + 1];
-			strcpy(course, cur_c);
-		}
-		else
-		{
-			course = new char[strlen(cur_c) + 1];
-			strcpy(course, cur_c);
-		}
-	}
-	char*get_surname()
-	{
-		cout << "Фамилия: ";
-		return surname;
-	}
-	char*get_name()
-	{
-		cout << "Имя: ";
-		return name;
-	}
-	char*get_patronymic()
-	{
-		cout << "Отчество: ";
-		return patronymic;
-	}
-	char*get_birthday()
-	{
-		cout << "Дата рождения: ";
-		return birthday;
-	}
-	char*get_address()
-	{
-		cout << "Адрес: ";
-		return address;
-	}
-	char*get_phone()
-	{
-		cout << "Моб. телефон: ";
-		return phone;
-	}
-	char*get_faculty()
-	{
-		cout << "Факультет: ";
-		return faculty;
-	}
-	char*get_course()
-	{
-		cout << "Курс: ";
-		return course;
-	}
-	void show()
-	{
-		cout << "Фамилия: " << surname << endl
-			<< "Имя: " << name << endl
-			<< "Отчество: " << patronymic << endl
-			<< "Дата рождения: " << birthday << endl
-			<< "Адрес: " << address << endl
-			<< "Моб. телефон: " << phone << endl
-			<< "Факультет: " << faculty << endl
-			<< "Курс: " << course << endl;
-	}
+private:
+    std::string surname_;
+    std::string name_;
+    std::string patronymic_;
+    std::string birthday_;
+    std::string address_;
+    std::string phone_;
+    std::string faculty_;
+    std::string course_;
 };
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-	Student Babenko("Бабенко","Виталий","Олегович","31.12.1997","г. Вишневое, ул. Машиностроителей 15A, кв. 195","+380635656379","ФБМИ","Второй");
-	Babenko.show();
-	Babenko.set_surname("Басик");
-	cout << Babenko.get_surname() << endl;
-	return 0;
+    Student babenko("\u0411\u0430\u0431\u0435\u043d\u043a\u043e",
+                    "\u0421\u0435\u0440\u0433\u0435\u0439",
+                    "\u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440\u043e\u0432\u0438\u0447",
+                    "31.12.1997",
+                    "\u0433. \u041c\u0430\u0440\u0438\u0443\u043f\u043e\u043b\u044c, \u043f\u0440. \u0421\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u0435\u0439 15A, \u043a\u0432. 195",
+                    "+380635656379",
+                    "\u0424\u0418\u0417",
+                    "\u0412\u0442\u043e\u0440\u043e\u0439");
+
+    babenko.print(std::cout);
+
+    babenko.setSurname("\u0418\u0432\u0430\u043d\u043e\u0432");
+    std::cout << "\u041d\u043e\u0432\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0444\u0430\u043c\u0438\u043b\u0438\u0438: " << babenko.surname() << '\n';
+
+    return 0;
 }

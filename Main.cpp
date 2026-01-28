@@ -14,7 +14,7 @@ int main() {
       "Second");
 
   babenko.print(std::cout);
-
+  
   babenko.setSurname("Panchenko");
   std::cout << "New surname value: "
             << babenko.surname() << '\n';

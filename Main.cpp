@@ -6,16 +6,16 @@
 int main() {
   Student babenko(
       "Babenko",
-      "Sergey",
-      "Alexandrovich",
-      "31.12.1997",
-      "Mariupol, Stroiteley Ave. 15A, Apt. 195",
-      "+380635656379", "Physics",
+      "Serhii",
+      "Oleksandrovich",
+      "15.02.2003",
+      "Mariupil, Azov Ave. 15A, Apt. 195",
+      "+38000000000", "Physics",
       "Second");
 
   babenko.print(std::cout);
 
-  babenko.setSurname("Ivanov");
+  babenko.setSurname("Panchenko");
   std::cout << "New surname value: "
             << babenko.surname() << '\n';
 
